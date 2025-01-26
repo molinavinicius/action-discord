@@ -51,16 +51,12 @@ if (argv._.length === 0 && !process.env.DISCORD_EMBEDS) {
   }
 
   url = process.env.DISCORD_WEBHOOK;
-  
-const discordMessageIdToReplyTo = process.env.DISCORD_MESSAGE_ID;
-
-console.log('DISCORD_MESSAGE_ID', discordMessageIdToReplyTo);
 
 payload = JSON.stringify({
   content: message,
-  ...(discordMessageIdToReplyTo && { 
+  ...(process.env.DISCORD_MESSAGE_ID && { 
     message_reference: { 
-      message_id: discordMessageIdToReplyTo,
+      message_id: process.env.DISCORD_MESSAGE_ID,
       fail_if_not_exists: false,
       type: 0 // DEFAULT type for standard replies
     },
@@ -75,6 +71,7 @@ payload = JSON.stringify({
 });
 }
 
+console.log('PAYLOAD', payload);
 // curl -X POST -H "Content-Type: application/json" --data "$(cat $GITHUB_EVENT_PATH)" $DISCORD_WEBHOOK/github
 
 (async () => {
