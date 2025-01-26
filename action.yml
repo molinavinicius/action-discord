@@ -1,6 +1,6 @@
-name: 'Actions for Discord'
+name: 'Send Discord Message'
 description: 'Outputs a message to Discord.'
-author: Ilshidur
+author: molinavinicius
 branding:
   icon: message-square
   color: gray-dark
