@@ -53,15 +53,19 @@ if (argv._.length === 0 && !process.env.DISCORD_EMBEDS) {
   url = process.env.DISCORD_WEBHOOK;
   const discordMessageIdToReplyTo = process.env.DISCORD_MESSAGE_ID;
 
+  console.log('DISCORD_MESSAGE_ID', discordMessageIdToReplyTo);
+
 payload = JSON.stringify({
   content: message,
   ...(discordMessageIdToReplyTo && { 
     message_reference: { 
       message_id: discordMessageIdToReplyTo,
-      fail_if_not_exists: false
+      fail_if_not_exists: false,
+      type: 0 // DEFAULT type for standard replies
     },
     allowed_mentions: {
-      replied_user: process.env.DISCORD_PING_REPLY_USER === 'true'
+      replied_user: process.env.DISCORD_PING_REPLY_USER === 'true',
+      parse: ['users', 'roles', 'everyone'] // Control which types of mentions are parsed
     }
   }),
   ...process.env.DISCORD_EMBEDS && { embeds: embedsObject },
