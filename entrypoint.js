@@ -51,9 +51,10 @@ if (argv._.length === 0 && !process.env.DISCORD_EMBEDS) {
   }
 
   url = process.env.DISCORD_WEBHOOK;
-  const discordMessageIdToReplyTo = process.env.DISCORD_MESSAGE_ID;
+  
+const discordMessageIdToReplyTo = process.env.DISCORD_MESSAGE_ID;
 
-  console.log('DISCORD_MESSAGE_ID', discordMessageIdToReplyTo);
+console.log('DISCORD_MESSAGE_ID', discordMessageIdToReplyTo);
 
 payload = JSON.stringify({
   content: message,
