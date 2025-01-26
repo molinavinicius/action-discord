@@ -1,4 +1,4 @@
-name: 'Send Discord Message'
+name: 'SAIL - Send Discord Message'
 description: 'Outputs a message to Discord.'
 author: molinavinicius
 branding:
